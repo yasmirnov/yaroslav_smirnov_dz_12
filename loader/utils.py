@@ -8,12 +8,18 @@ def image_save(picture):
     filename = picture.filename
     filetype = filename.split('.')[-1]
 
-    if filetype not in ['jpeg', 'jpg', 'svg', 'png', 'bmp']:
-        return
+    try:
+        if filetype not in ['jpeg', 'jpg', 'png']:
+            return
 
-    picture.save(f'./uploads/images/{filename}')
+        picture.save(f'./uploads/images/{filename}')
+        return f'uploads/images/{filename}'
 
-    return f'uploads/images/{filename}'
+    except TypeError as e:
+        print(e)
+
+    except FileNotFoundError as e:
+        print(e)
 
 
 def post_save_to_json(posts):

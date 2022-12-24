@@ -8,10 +8,12 @@ def load_posts():
     try:
         with open(POST_PATH, 'r') as file:
             return json.load(file)
+
     except FileNotFoundError:
-        print('Файл формата .json отсутствует')
+        print("Файл не найден")
+
     except JSONDecodeError:
-        print('Файл формата .json не удается преобразовать')
+        print("Файл не удается преобразовать")
 
 
 def search_posts(text_for_search):
